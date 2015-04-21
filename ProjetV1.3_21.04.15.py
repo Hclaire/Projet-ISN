@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Projet jeu 1 affichage chiffre
+Projet jeu 2
 """
 
 import pygame
@@ -103,7 +103,7 @@ def choix_des_signes_et_boutons(fenetre):
     else:
         signe = pygame.image.load("./signe/signe_fois.png").convert_alpha()
   
-    fenetre.blit (signe, (250,20))
+    fenetre.blit(signe, (250,20))
     
     sign_egal = pygame.image.load("./signe/signe_egal.png").convert_alpha()
     fenetre.blit(sign_egal,(175,150))
