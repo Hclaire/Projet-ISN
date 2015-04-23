@@ -217,7 +217,7 @@ def evenement(fenetre, resultat_jeu_nb, result):
     pygame.quit()
 
 #def verification_reponse(bouton_reponse,):
-        
+            
     
 def main():
     pygame.init()
