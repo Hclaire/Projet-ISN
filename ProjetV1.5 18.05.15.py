@@ -164,16 +164,23 @@ def decomposition_resultat(result,fenetre):
     liste_chiffre = []
     # resultat qu'on affiche est soit = vrai resultat + 1 soit  vrai resultat - 1
     # cela remplace les probabilités
-    result_plus_un = result + 1
-    result_moins_un = result -1
-    
+    if result != 0:
+        result_choix_un = result + 1
+        result_choix_deux = result-1
+
+    else :
+        result_choix_un = result + 1
+        result_choix_deux = result + 2
+
+
     choix_result = random.randint(1,3)
     if choix_result == 1 :
         resultat_jeu = result
     elif choix_result == 2 :
-        resultat_jeu = result_plus_un
+        resultat_jeu = result_choix_un
     else :
-        resultat_jeu = result_moins_un
+        resultat_jeu = result_choix_deux
+    
     resultat_jeu_nb = resultat_jeu # on fait cela pour récupérer resultat_jeu à la fin de la fonction
     resultat_jeu = str(resultat_jeu_nb) # transforme int en str *pour la boucle for*
     for chiffre in resultat_jeu:
@@ -190,12 +197,13 @@ def decomposition_resultat(result,fenetre):
 def affichage_resultat(liste_chiffre,fenetre):
     a = 200
     for chiffre in liste_chiffre:
-    
+        
+        #Chargement et collage du numero   
         if chiffre == 0 :
             chiffre_affich = pygame.image.load("./chiffre/chiffre_0.png").convert_alpha()
             
         elif chiffre == 1 :
-        #Chargement et collage du numero
+
             chiffre_affich = pygame.image.load("./chiffre/chiffre_1.png").convert_alpha()
 
         elif chiffre == 2:
@@ -225,10 +233,6 @@ def affichage_resultat(liste_chiffre,fenetre):
         
         fenetre.blit(chiffre_affich, (a,160))#placement dans la fenêtre avec coordonnées
         a += 125 # décalage pour affichage du deuxieme chiffre
-
-
-
-
 
 
 def evenement(fenetre,resultat_jeu_nb, result):
@@ -295,39 +299,12 @@ def evenement(fenetre,resultat_jeu_nb, result):
                         
                         if yninja == 400:
                             bon = False
-                
-  
-
-
 
         pygame.display.flip()
     pygame.quit()
     return bouton_reponse, bouton_enfonce
+                
 
-
-
-
-
-
-"""
-def verification_reponse(fenetre,resultat_jeu_nb, result,bouton_enfonce):
-
-    if resultat_jeu_nb == result and bouton_enfonce == 1:
-        affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
-
-    elif  resultat_jeu_nb != result and bouton_enfonce == 2:
-        affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
-        
-    else:
-        affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageWrong.png").convert_alpha()
-    surface.blit(affichage_bonhomme,(150,150))
-
-    pygame.display.flip() 
-
-"""
-
-
-    
 def main():
     pygame.init()
     pygame.display.init() 
@@ -343,9 +320,8 @@ def main():
     liste_chiffre , resultat_jeu_nb = decomposition_resultat(result,fenetre)
     affichage_resultat (liste_chiffre , fenetre)
     bouton_reponse, bouton_enfonce = evenement(fenetre, resultat_jeu_nb, result)
-    #verification_reponse(fenetre,resultat_jeu_nb, result,bouton_enfonce)
-
     #Rafraîchissement de l'écran
+    
     pygame.display.flip()        
 
 main()
