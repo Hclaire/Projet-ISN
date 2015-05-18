@@ -16,16 +16,16 @@ def choix_fond_de_couleur(fenetre):
     numero_fond = random.randint(1,4)
     if numero_fond == 1:
         #Chargement et collage du fond
-        fond = pygame.image.load("./fond/fondrouge.jpg").convert()
+        fond = pygame.image.load("./fond/fondjaune.jpg").convert()
 
     elif numero_fond == 2:
         fond = pygame.image.load("./fond/fondbleu.jpg").convert()
 
     elif numero_fond == 3:
-        fond = pygame.image.load("./fond/fondviolet.jpg").convert()
+        fond = pygame.image.load("./fond/fondrose.jpg").convert()
 
     else:
-        fond = pygame.image.load("./fond/fondvert.jpg").convert()
+        fond = pygame.image.load("./fond/fondrose2.jpg").convert()
 
     fenetre.blit(fond, (0,0))  # placement dans la fenetre avec coordonnées
 
@@ -122,12 +122,12 @@ def choix_nb_2( fenetre):
 def choix_des_signes_et_boutons(fenetre):
     # choix chiffre hasard entre 1 et 2 inclus
     numero_signe = random.randint(1,2)
-    
+    print(numero_signe)
     if numero_signe == 1:
         signe = pygame.image.load("./signe/signe_plus.png").convert_alpha()
     else:
         signe = pygame.image.load("./signe/signe_fois.png").convert_alpha()
-  
+    print(signe)
     fenetre.blit(signe, (250,20))
     
     sign_egal = pygame.image.load("./signe/signe_egal.png").convert_alpha()
@@ -146,6 +146,7 @@ def choix_des_signes_et_boutons(fenetre):
 
 
 def calcul_resultat(nb_1, nb_2, signe):
+    print(signe)
     if signe == 1:
        result = nb_2 + nb_1
     else:
@@ -234,9 +235,13 @@ def evenement(fenetre,resultat_jeu_nb, result):
     #BOUCLE INFINIE
     pygame.display.init()
 
+    yninja = 590
+    bon = False
+
     i = 0 # compteur
     continuer = True
     while continuer:
+        
         for event in pygame.event.get():	#Attente des événements
             if event.type == QUIT:  # on quitte la partie par la croix
                 continuer = False
@@ -259,17 +264,43 @@ def evenement(fenetre,resultat_jeu_nb, result):
 
                 if resultat_jeu_nb == result and bouton_enfonce == 1:
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
-
+                    bon = True
+                    while bon:
+                        yninja -= 1
+                        fenetre.blit(affichage_bonhomme,(250, yninja))
+                        pygame.display.flip()
+                        
+                        if yninja == 400:
+                            bon = False
+              
                 elif  resultat_jeu_nb != result and bouton_enfonce == 2:
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
-        
+                    bon = True
+                    
+                    while bon:
+                        yninja -= 1
+                        fenetre.blit(affichage_bonhomme,(250, yninja))
+                        pygame.display.flip()
+                        
+                        if yninja == 400:
+                            bon = False
+                    
                 else:
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageWrong.png").convert_alpha()
+                    bon = True 
+                    while bon:
+                        yninja -= 1
+                        fenetre.blit(affichage_bonhomme,(250, yninja))
+                        pygame.display.flip()
+                        
+                        if yninja == 400:
+                            bon = False
+                
+  
 
-                fenetre.blit(affichage_bonhomme,(150,150))
- 
 
-            pygame.display.flip()
+
+        pygame.display.flip()
     pygame.quit()
     return bouton_reponse, bouton_enfonce
 
@@ -301,12 +332,13 @@ def main():
     pygame.init()
     pygame.display.init() 
     #Ouverture de la fenêtre Pygame
-    fenetre = pygame.display.set_mode((640, 480))
+    fenetre = pygame.display.set_mode((640, 590))
  
     choix_fond_de_couleur(fenetre)
-    nb_1 = choix_nb_1(fenetre)
-    nb_2 = choix_nb_2(fenetre)
-    signe = choix_des_signes_et_boutons(fenetre)
+    nb_1 = choix_nb_1(fenetre)# nb de gauche
+    nb_2 = choix_nb_2(fenetre)# nb de droite
+    signe = choix_des_signes_et_boutons(fenetre)# le signe de l'opération
+    pygame.display.flip()
     result = calcul_resultat( nb_1,nb_2,signe)
     liste_chiffre , resultat_jeu_nb = decomposition_resultat(result,fenetre)
     affichage_resultat (liste_chiffre , fenetre)
