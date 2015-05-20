@@ -23,7 +23,7 @@ def choix_fond(fenetre):
     fond1 = pygame.image.load("./fond/fond_panneau.png").convert_alpha()
     fenetre.blit(fond_general, (0,0))
     fenetre.blit (fond, (0,200))
-    fenetre.blit (fond1, (750,200))
+    fenetre.blit (fond1, (600,200))
     
 
 def choix_fleches(numero, fenetre):
@@ -69,10 +69,9 @@ def choix_fleches(numero, fenetre):
         fleche = pygame.image.load("./fleches/fleche_gauche_rose.png").convert_alpha()
         fleche1 = pygame.image.load("./fleches/fleche_gauche_rose.png").convert_alpha()
 
-    fenetre.blit(fleche, (50,200))
-    fenetre.blit(fleche1, (800,200))
+    fenetre.blit(fleche,(0,200))
+    fenetre.blit(fleche1, (600,200))
     
-
 def evenement(numero_fleches, fenetre):
     
     continuer = True
@@ -87,7 +86,7 @@ def evenement(numero_fleches, fenetre):
             
             elif event.type == KEYDOWN:
                     
-                if event.key == K_DOWN: #Si "flèche bas"
+                if event.key == K_d: #Si "flèche bas"
                         
                     if numero_fleches == 1 or numero_fleches == 7:
 
@@ -96,9 +95,9 @@ def evenement(numero_fleches, fenetre):
                     else:
 
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                    fenetre.blit(result, (170,300))
+                    fenetre.blit(result, (160,300))
 
-                elif event.key == K_LEFT:
+                elif event.key == K_s:
 
                     if numero_fleches == 4 or numero_fleches == 6:
 
@@ -107,9 +106,9 @@ def evenement(numero_fleches, fenetre):
                     else:
 
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                    fenetre.blit(result, (170,300))
+                    fenetre.blit(result, (160,300))
 
-                elif event.key == K_UP: 
+                elif event.key == K_e: 
                         
                     if numero_fleches == 3 or numero_fleches == 5:
                             
@@ -118,86 +117,94 @@ def evenement(numero_fleches, fenetre):
                     else:
                             
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                    fenetre.blit(result, (170,300))
+                    fenetre.blit(result, (160,300))
 
+                elif event.key == K_f:
+                    
+                    if numero_fleches == 2 or numero_fleches == 8:
+                            
+                        result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
+
+                    else:
+
+                        result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
+                        
+                    fenetre.blit(result, (160,300))
+                    pygame.display.flip() #Rafraîchissement de l'écran
+
+                elif event.key == K_DOWN: #Si "flèche bas"
+                        
+                    if numero_fleches == 1 or numero_fleches == 7:
+                            
+                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
+                        
+                    else:
+
+                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
+                    fenetre.blit(result1, (750,300))
+                    
                 elif event.key == K_RIGHT:
                     
                     if numero_fleches == 2 or numero_fleches == 8:
                             
-                        result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
+                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
 
                     else:
 
-                        result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        
-                    fenetre.blit(result, (170,300))
+                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                 
-                elif event.key == K_s: #Si "flèche bas"
+                    fenetre.blit(result1, (750,300))
+                    
+                elif event.key == K_LEFT: 
                         
-                    if numero_fleches == 1 or numero_fleches == 7:
+                    if numero_fleches == 4 or numero_fleches == 6:
                             
                         result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
                         
                     else:
 
                         result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                    fenetre.blit(result1, (900,300))
-                elif event.key == K_q:
-
-                    if numero_fleches == 4 or numero_fleches == 6:
-
-                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-
-                    else:
-
-                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                    fenetre.blit(result1, (900,300))
-                elif event.key == K_z: 
-                        
+                    fenetre.blit(result1, (750,300))
+                    
+                elif event.key == K_UP:
+                    
                     if numero_fleches == 3 or numero_fleches == 5:
                             
                         result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                            
+
                     else:
-                            
+
                         result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        
-                    fenetre.blit(result1, (900,300))
-                elif event.key == K_d:
+                
+                    fenetre.blit(result1, (750,300))
                     
-                    if numero_fleches == 2 or numero_fleches == 8:
-                            
-                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-
-                    else:
-
-                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                
-                    fenetre.blit(result1, (900,300))
-
                 pygame.display.flip() #Rafraîchissement de l'écran
-                pygame.time.wait(4000)
+                pygame.time.wait(2000)
+                main()                
                 
-                main()
-        
+                
     pygame.quit()
-         
+        
+     
 
 def main():
-        
+
     pygame.init() #Ouverture de la fenêtre Pygame
 
-    fenetre = pygame.display.set_mode((2500, 1600))
-        
+    fenetre = pygame.display.set_mode((1150, 700))  
+
     choix_fond(fenetre)
+
     pygame.display.flip() #Rafraîchissement de l'écran
 
     numero_fleches = random.randint(1,8)
     
     choix_fleches(numero_fleches, fenetre)
+
     pygame.display.flip() #Rafraîchissement de l'écran
 
     evenement(numero_fleches, fenetre)
+
     pygame.display.flip() #Rafraîchissement de l'écran
  
 main()

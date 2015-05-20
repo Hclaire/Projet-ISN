@@ -288,7 +288,7 @@ def evenement(fenetre,resultat_jeu_nb, result):
                         
                         if yninja == 400:
                             bon = False
-                    
+                
                 else:
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageWrong.png").convert_alpha()
                     bon = True 
@@ -299,11 +299,18 @@ def evenement(fenetre,resultat_jeu_nb, result):
                         
                         if yninja == 400:
                             bon = False
+                
+            pygame.display.flip()
 
-        pygame.display.flip()
+            
+            
     pygame.quit()
     return bouton_reponse, bouton_enfonce
-                
+
+def repetition():
+
+    main()
+                  
 
 def main():
     pygame.init()
@@ -323,5 +330,5 @@ def main():
     #Rafraîchissement de l'écran
     
     pygame.display.flip()        
-
+    repetition()
 main()
