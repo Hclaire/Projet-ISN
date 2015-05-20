@@ -242,28 +242,28 @@ def evenement(fenetre,resultat_jeu_nb, result):
     yninja = 590
     bon = False
 
-    i = 0 # compteur
     continuer = True
     while continuer:
         
         for event in pygame.event.get():	#Attente des événements
             if event.type == QUIT:  # on quitte la partie par la croix
                 continuer = False
-            if event.type == KEYDOWN and i < 1: # KEYDOWN => on appuie sur une touche // i < 1 on ne peut enfoncé qu'un seul bouton
+            elif event.type == KEYDOWN : # KEYDOWN => on appuie sur une touche // i < 1 on ne peut enfoncé qu'un seul bouton
                 if event.key == K_LEFT: # appuie sur la touche fleche gauche
                         #fenetre.blit(background, position, position) 
                     bouton_reponse = pygame.image.load("./Boutons/BoutonRightEnfonce.png").convert_alpha()
                     fenetre.blit(bouton_reponse,(10,300))#placement dans la fenêtre avec coordonnées
                     bouton_enfonce = 1
-                elif event.key == K_RIGHT and i < 1:
+            
+                elif event.key == K_RIGHT :
                     bouton_reponse = pygame.image.load("./Boutons/BoutonWrongEnfonce.png").convert_alpha()
                     fenetre.blit(bouton_reponse,(470,300))#placement dans la fenêtre avec coordonnées
                     bouton_enfonce = 2
-                else:
+            
+                else :
                 
                     bouton_enfonce = 3 
-                    
-                i += 1 
+                 
                 pygame.display.flip()    #Rafraîchissement de l'écran
 
                 if resultat_jeu_nb == result and bouton_enfonce == 1:
@@ -299,17 +299,14 @@ def evenement(fenetre,resultat_jeu_nb, result):
                         
                         if yninja == 400:
                             bon = False
+                main()
                 
             pygame.display.flip()
-
             
             
     pygame.quit()
     return bouton_reponse, bouton_enfonce
 
-def repetition():
-
-    main()
                   
 
 def main():
@@ -330,5 +327,4 @@ def main():
     #Rafraîchissement de l'écran
     
     pygame.display.flip()        
-    repetition()
 main()
