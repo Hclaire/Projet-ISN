@@ -306,6 +306,7 @@ def evenement(fenetre, resultat_jeu_nb, result,yninja, abscisse_right, ordonnee,
 
                         if yninja == 480:
                             bon = False
+                pygame.time.wait(2000)
 
     pygame.quit()
     return bouton_reponse, bouton_enfonce
