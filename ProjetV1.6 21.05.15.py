@@ -231,15 +231,14 @@ def evenement(fenetre, resultat_jeu_nb, result,yninja, abscisse_right, ordonnee,
 
     bon = False
 
-<<<<<<< HEAD
+
     i = 0  # compteur
     son_correct = pygame.mixer.Sound("./Son_touches/Sonright.wav")
     son_incorrect = pygame.mixer.Sound("./Son_touches/sonwrong.wav")
     son_quit_ecran = pygame.mixer.Sound("./Son_touches/quitecran.wav")
     son_appuiebouton = pygame.mixer.Sound("./Son_touches/sonappuiebouton.wav")
 
-=======
->>>>>>> origin/master
+
     continuer = True
     while continuer:
 
@@ -248,48 +247,28 @@ def evenement(fenetre, resultat_jeu_nb, result,yninja, abscisse_right, ordonnee,
             if event.type == QUIT:  # on quitte la partie par la croix
                 son_quit_ecran.play()
                 continuer = False
-<<<<<<< HEAD
+
  
             if event.type == KEYDOWN and i < 1:
                 # KEYDOWN => on appuie sur une touche et i < 1
                 # ---- > on ne peut enfoncé qu'un seul bouton
                 son_appuiebouton.play()
                 if event.key == K_LEFT:  # appuie sur la touche fleche gauche
-=======
-            elif event.type == KEYDOWN : # KEYDOWN => on appuie sur une touche // i < 1 on ne peut enfoncé qu'un seul bouton
-                if event.key == K_LEFT: # appuie sur la touche fleche gauche
-                        #fenetre.blit(background, position, position) 
->>>>>>> origin/master
                     bouton_reponse = pygame.image.load("./Boutons/BoutonRightEnfonce.png").convert_alpha()
                     fenetre.blit(bouton_reponse, (abscisse_right, ordonnee))
                     # placement dans la fenêtre avec coordonnées
                     bouton_enfonce = 1
-<<<<<<< HEAD
                 elif event.key == K_RIGHT:
-=======
-            
-                elif event.key == K_RIGHT :
->>>>>>> origin/master
                     bouton_reponse = pygame.image.load("./Boutons/BoutonWrongEnfonce.png").convert_alpha()
                     abscisse_wrong = abscisse_right + 320
                     fenetre.blit(bouton_reponse, (abscisse_wrong, ordonnee))
                     # placement dans la fenêtre avec coordonnées
                     bouton_enfonce = 2
-<<<<<<< HEAD
                 else:
-
                     bouton_enfonce = 3
 
                 i += 1
                 pygame.display.flip()    # Rafraîchissement de l'écran
-=======
-            
-                else :
-                
-                    bouton_enfonce = 3 
-                 
-                pygame.display.flip()    #Rafraîchissement de l'écran
->>>>>>> origin/master
 
                 if resultat_jeu_nb == result and bouton_enfonce == 1:
                     son_correct.play()
@@ -327,29 +306,16 @@ def evenement(fenetre, resultat_jeu_nb, result,yninja, abscisse_right, ordonnee,
 
                         if yninja == 480:
                             bon = False
-<<<<<<< HEAD
 
     pygame.quit()
     return bouton_reponse, bouton_enfonce
-
-=======
-                main()
-                
-            pygame.display.flip()
-            
-            
-    pygame.quit()
-    return bouton_reponse, bouton_enfonce
-
-                  
->>>>>>> origin/master
 
 def main():
     pygame.init()
     pygame.display.init()
     # Ouverture de la fenêtre Pygame
     fenetre = pygame.display.set_mode((1150, 700))
-    fond = pygame.image.load("./fond/fond.png").convert()
+    fond = pygame.image.load("./fond/fondjeux_deux.png").convert()
     fenetre.blit(fond, (0, 0))
 
     abscisse1 = 71
@@ -382,9 +348,6 @@ def main():
     signe_gauche = choix_des_signes_et_boutons(fenetre,abscisse_signe_cadre_gauche, ordonnee_signe,abscisse_egal_cadre_gauche, ordonnee_egal, abscisse_bouton_cadre_gauche, ordonnee_bouton)# le signe de l'opération
     signe_droit = choix_des_signes_et_boutons(fenetre,abscisse_signe_cadre_droit, ordonnee_signe,abscisse_egal_cadre_droit, ordonnee_egal, abscisse_bouton_cadre_droit, ordonnee_bouton)
 
-    pygame.display.flip()
-<<<<<<< HEAD
-
     result1 = calcul_resultat( nb_1_cadre_gauche,nb_2_cadre_gauche,signe_gauche)
     result2 = calcul_resultat( nb_1_cadre_droit,nb_2_cadre_droit,signe_droit)
 
@@ -396,7 +359,9 @@ def main():
     abscisse_affiche_droit = 750
     affichage_resultat(liste_chiffre1 , fenetre, ordonnee_affich,abscisse_affiche_gauche)
     affichage_resultat(liste_chiffre2 , fenetre, ordonnee_affich,abscisse_affiche_droit)
-
+    
+    pygame.display.flip()
+    
     yninja_cadre_gauche = 700
     yninja_cadre_droit = 700
     abscisse_ninja_gauche = 190
@@ -407,7 +372,7 @@ def main():
 
     pygame.display.flip()
 
-=======
+
     result = calcul_resultat( nb_1,nb_2,signe)
     liste_chiffre , resultat_jeu_nb = decomposition_resultat(result,fenetre)
     affichage_resultat (liste_chiffre , fenetre)
@@ -415,5 +380,5 @@ def main():
     #Rafraîchissement de l'écran
     
     pygame.display.flip()        
->>>>>>> origin/master
+
 main()
