@@ -110,12 +110,12 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre, vies):
 
                         result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
                         son_correct.play()
-
+                        k = 1
                     else:
 
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
-
+                        k = 0
 
                     fenetre.blit(result, (160,300))
 
