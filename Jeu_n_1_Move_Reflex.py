@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # -*- coding: utf-8 -*-
 """
@@ -304,6 +305,8 @@ def main():
                     pygame.display.flip() #Rafra卯chissement de l'茅cran
 main()
 =======
+=======
+>>>>>>> origin/master
 # -*- coding: utf-8 -*-
 """
 Created on Tue Apr 21 14:16:25 2015
@@ -313,22 +316,36 @@ Created on Tue Apr 21 14:16:25 2015
 
 """
 
+<<<<<<< HEAD
 Jeu n掳1 : 
 L'utilisateur doit appuyer sur la fl猫che qui correspond 脿 l'茅cran
 si le fond de la fl猫che est bleu sinon il doit appuyer la fl猫che inverse.
+=======
+Jeu nÂ°1 : 
+L'utilisateur doit appuyer sur la flÃ¨che qui correspond Ã  l'Ã©cran
+si le fond de la flÃ¨che est bleu sinon il doit appuyer la flÃ¨che inverse.
+>>>>>>> origin/master
 
 """
 import pygame
 import random
 from pygame.locals import *
 
+<<<<<<< HEAD
 pygame.init() #Ouverture de la fen锚tre Pygame
+=======
+pygame.init() #Ouverture de la fenÃªtre Pygame
+>>>>>>> origin/master
 
 fenetre = pygame.display.set_mode((1150, 700))  
 fond_accueil = pygame.image.load("./fond/fond1.png").convert_alpha()
 image_regle_jeu = pygame.image.load("./fond/reglejeu.png").convert_alpha()
 fenetre.blit(fond_accueil, (0,0))
+<<<<<<< HEAD
 pygame.display.flip() #Rafra卯chissement de l'茅cran
+=======
+pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+>>>>>>> origin/master
 pygame.time.wait(4000)
 
 i = 0
@@ -402,7 +419,11 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
     son_incorrect = pygame.mixer.Sound("./Son_touches/son_incorrect.wav")
     while continuer:
         
+<<<<<<< HEAD
         for event in pygame.event.get():    #Attente des 茅v茅nements
+=======
+        for event in pygame.event.get():    #Attente des Ã©vÃ©nements
+>>>>>>> origin/master
         
             if event.type == QUIT:
                 
@@ -410,7 +431,11 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
             
             elif event.type == KEYDOWN :
                     
+<<<<<<< HEAD
                 if event.key == K_d: #Si "fl猫che bas"
+=======
+                if event.key == K_d: #Si "flÃ¨che bas"
+>>>>>>> origin/master
                         
                     if numero_fleches_J1 == 1 or numero_fleches_J1 == 7:
 
@@ -459,7 +484,11 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                     fenetre.blit(result, (160,300))
 
 
+<<<<<<< HEAD
                 elif event.key == K_DOWN: #Si "fl猫che bas"
+=======
+                elif event.key == K_DOWN: #Si "flÃ¨che bas"
+>>>>>>> origin/master
                         
                     if numero_fleches_J2 == 1 or numero_fleches_J2 == 7:
                             
@@ -507,7 +536,11 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                         son_incorrect.play()
                     fenetre.blit(result1, (750,300))
                    
+<<<<<<< HEAD
                 pygame.display.flip() #Rafra卯chissement de l'茅cran
+=======
+                pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+>>>>>>> origin/master
                 pygame.time.wait(2000)
                 abscisse_fleche_J1 = 0
                 ordonnee_fleche_J1 = 200
@@ -517,7 +550,11 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
 
                 choix_fond(fenetre)
 
+<<<<<<< HEAD
                 pygame.display.flip() #Rafra卯chissement de l'茅cran
+=======
+                pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+>>>>>>> origin/master
 
                 numero_fleches_J1 = random.randint(1,8)
                 numero_fleches_J2 = random.randint(1,8)
@@ -525,11 +562,19 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                 choix_fleches(numero_fleches_J1, fenetre, abscisse_fleche_J1, ordonnee_fleche_J1)
                 choix_fleches(numero_fleches_J2, fenetre,abscisse_fleche_J2, ordonnee_fleche_J2  )
 
+<<<<<<< HEAD
                 pygame.display.flip() #Rafra卯chissement de l'茅cran
 
                 evenement(numero_fleches_J1, numero_fleches_J2, fenetre)
 
                 pygame.display.flip() #Rafra卯chissement de l'茅cran
+=======
+                pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+
+                evenement(numero_fleches_J1, numero_fleches_J2, fenetre)
+
+                pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+>>>>>>> origin/master
     
     pygame.quit()
     
@@ -537,7 +582,11 @@ def main_01():
     
     continuer = 1
     while continuer:
+<<<<<<< HEAD
         for event in pygame.event.get():    #Attente des 茅v茅nements
+=======
+        for event in pygame.event.get():    #Attente des Ã©vÃ©nements
+>>>>>>> origin/master
             if event.type == QUIT:
                 continuer = 0
             elif event.type == MOUSEBUTTONDOWN:
@@ -550,7 +599,11 @@ def main_01():
 
                     choix_fond(fenetre)
 
+<<<<<<< HEAD
                     pygame.display.flip() #Rafra卯chissement de l'茅cran
+=======
+                    pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+>>>>>>> origin/master
 
                     numero_fleches_J1 = random.randint(1,8)
                     numero_fleches_J2 = random.randint(1,8)
@@ -558,9 +611,17 @@ def main_01():
                     choix_fleches(numero_fleches_J1, fenetre, abscisse_fleche_J1, ordonnee_fleche_J1)
                     choix_fleches(numero_fleches_J2, fenetre,abscisse_fleche_J2, ordonnee_fleche_J2  )
 
+<<<<<<< HEAD
                     pygame.display.flip() #Rafra卯chissement de l'茅cran
 
                     evenement(numero_fleches_J1, numero_fleches_J2, fenetre)
 
                     pygame.display.flip() #Rafra卯chissement de l'茅cran
+=======
+                    pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+
+                    evenement(numero_fleches_J1, numero_fleches_J2, fenetre)
+
+                    pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
+>>>>>>> origin/master
 main_01()
