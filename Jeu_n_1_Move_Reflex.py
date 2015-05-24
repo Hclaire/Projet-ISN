@@ -8,7 +8,7 @@ Created on Tue Apr 21 14:16:25 2015
 """
 
 Jeu nÂ°1 : 
-L'utilisateur doit appuyer sur la flÃ¨che qui correspond Ã  l'Ã©cran
+L'utilisateur doit appuyer sur la flÃ¨che qui correspond Ã  l'Ã©cran
 si le fond de la flÃ¨che est bleu sinon il doit appuyer la flÃ¨che inverse.
 
 """
@@ -258,4 +258,3 @@ def main_01():
 
                     pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
 main_01()
->>>>>>> 28f94a1cb75d5d90bd5a91d293c215a893b23656:Jeu_n_1_Move_Reflex.py
