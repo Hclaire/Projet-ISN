@@ -366,7 +366,7 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
     pygame.quit()
 
 
-def main():
+def main_02():
     pygame.init()
     pygame.display.init()
     # Ouverture de la fenêtre Pygame
