@@ -9,8 +9,10 @@ from pygame.locals import *
 
 # def fenetre_d_accueil(fenetre):
 
-# choix fond de couleur
 
+# choix fond de couleur
+defaite_gauche = 0
+defaite_droite =0
 
 def choix_fond_de_couleur(fenetre, abscisse, ordonnee):
     numero_fond = random.randint(1, 4)
@@ -290,7 +292,7 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
                     situation_joueur_gauche = "gagne"
-                    defaite_gauche = defaite_gauche
+
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme,(abscisse_ninja_gauche, yninja))
@@ -304,7 +306,7 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
                     situation_joueur_gauche = "gagne"
-                    defaite_gauche = defaite_gauche                      
+                  
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_gauche, yninja))
@@ -319,7 +321,17 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageWrong.png").convert_alpha()
                     bon = True
                     situation_joueur_gauche = "perdu"
-                    defaite_gauche += 1                        
+                    defaite_gauche += 1
+                    if defaite_gauche == 1:
+                        flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                        fenetre.blit(flamme,(100,150))
+                    elif defaite_gauche == 2:
+                        flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                        fenetre.blit(flamme,(300,150))
+                    else:
+                        flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                        fenetre.blit(flamme,(500,150))
+                    pygame.time.wait(5000)
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_gauche, yninja))
@@ -334,7 +346,7 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
                     situation_joueur_droit = "gagne"
-                    defaite_droite = defaite_droite                       
+                      
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme,(abscisse_ninja_droit, yninja))
@@ -348,7 +360,7 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
                     situation_joueur_droit = "gagne"
-                    defaite_droite = defaite_droite                            
+                           
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_droit, yninja))
@@ -362,7 +374,17 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageWrong.png").convert_alpha()
                     bon = True
                     situation_joueur_droit = "perdu"
-                    defaite_droite  += 1                        
+                    defaite_droite  += 1
+                    if defaite_droite == 1 :
+                        flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                        fenetre.blit(flamme,(600,150))                                    
+                    elif defaite_droite == 2:
+                        flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                        fenetre.blit(flamme,(800,150))                                     
+                    else:
+                        flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                        fenetre.blit(flamme,(1000,150))
+                    pygame.time.wait(5000)
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_droit, yninja))
@@ -374,29 +396,10 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     print("trompé")
                 pygame.display.flip()
 
-                if defaite_gauche == 1:
-                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
-                    fenetre.blit(flamme,(500,500))
-                elif defaite_gauche == 2:
-                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
-                    fenetre.blit(flamme,(650,500))
-                else:
-                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
-                    fenetre.blit(flamme,(800,500))                  
-
-                if defaite_droite == 1 :
-                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
-                    fenetre.blit(flamme,(500,500))                                    
-                elif defaite_gauche == 2:
-                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
-                    fenetre.blit(flamme,(650,500))                                     
-                else:
-                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
-                    fenetre.blit(flamme,(800,500))                                     
-                            
-                    
-                pygame.display.flip()
-
+         
+                while (defaite_gauche<4 or defaite_droite<4):
+                    defaite_gauche, defaite_droite = main_02(defaite_gauche, defaite_droite)
+        
     pygame.quit()
     return defaite_gauche, defaite_droite
 
@@ -456,15 +459,10 @@ def main_02(defaite_gauche,defaite_droite):
     abscisse_ninja_gauche = 190
     abscisse_ninja_droit = 738
 
+
     defaite_gauche, defaite_droite = evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja, abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee_bouton,abscisse_ninja_gauche, abscisse_ninja_droit)
     pygame.display.flip()
 
-    return defaite_gauche, defaite_droite
-    # Rafraîchissement de l'écran
 
 
-<<<<<<< HEAD
-
-main_02()
-=======
->>>>>>> ed0f127445c383007fd1c0d2b0e6d48d1a06d5f6
+main_02(defaite_gauche, defaite_droite)
