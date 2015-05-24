@@ -26,7 +26,7 @@ pygame.display.flip() #Rafraîchissement de l'écran
 pygame.time.wait(4000)
 
 i = 0
-while i < 20:
+while i < 50:
     
     image_cliquez = pygame.image.load("./fond/image_clignote.png").convert_alpha()
     fenetre.blit(image_cliquez, (0,0))
@@ -89,7 +89,7 @@ def choix_fleches(numero, fenetre, abscisse, ordonnee):
     fenetre.blit(fleche,(abscisse, ordonnee))
 
     
-def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
+def evenement(numero_fleches_J1, numero_fleches_J2, fenetre, vies):
     
     continuer = True
     son_correct = pygame.mixer.Sound("./Son_touches/son_correct.wav")
@@ -110,10 +110,13 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
 
                         result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
                         son_correct.play()
+                        k = 1
                     else:
 
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
+                        k = 0
+
                     fenetre.blit(result, (160,300))
 
                 elif event.key == K_s:
@@ -122,10 +125,13 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
 
                         result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
                         son_correct.play()
+                        k = 1
+            
                     else:
 
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
+                        k = 0
                     fenetre.blit(result, (160,300))
 
                 elif event.key == K_e: 
@@ -133,11 +139,13 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                     if numero_fleches_J1 == 3 or numero_fleches_J1 == 5:
                             
                         result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()                            
+                        son_correct.play()       
+                        k = 1
                     else:
                             
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
+                        k = 0
                     fenetre.blit(result, (160,300))
 
                 elif event.key == K_f:
@@ -146,10 +154,12 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                             
                         result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
                         son_correct.play()
+                        k = 1
                     else:
 
                         result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()                        
+                        son_incorrect.play()                   
+                        k = 0
                     fenetre.blit(result, (160,300))
 
 
@@ -158,11 +168,13 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                     if numero_fleches_J2 == 1 or numero_fleches_J2 == 7:
                             
                         result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()                        
+                        son_correct.play()  
+                        k = 1
                     else:
 
                         result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
+                        k = 0
                     fenetre.blit(result1, (750,300))
                     
                 elif event.key == K_RIGHT:
@@ -171,10 +183,12 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                             
                         result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
                         son_correct.play()
+                        k = 1
                     else:
 
                         result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
+                        k = 0
                     fenetre.blit(result1, (750,300))
                     
                 elif event.key == K_LEFT: 
@@ -182,11 +196,13 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                     if numero_fleches_J2 == 4 or numero_fleches_J2 == 6:
                             
                         result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()                        
+                        son_correct.play() 
+                        k = 1
                     else:
 
                         result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
+                        k = 0
                     fenetre.blit(result1, (750,300))
                     
                 elif event.key == K_UP:
@@ -195,14 +211,20 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                             
                         result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
                         son_correct.play()
+                        k = 1
                     else:
 
                         result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
                         son_incorrect.play()
+                        k = 0
                     fenetre.blit(result1, (750,300))
+            
                    
                 pygame.display.flip() #Rafraîchissement de l'écran
                 pygame.time.wait(2000)
+                
+            if k = 1:
+                
                 abscisse_fleche_J1 = 0
                 ordonnee_fleche_J1 = 200
     
@@ -222,6 +244,28 @@ def evenement(numero_fleches_J1, numero_fleches_J2, fenetre):
                 pygame.display.flip() #Rafraîchissement de l'écran
 
                 evenement(numero_fleches_J1, numero_fleches_J2, fenetre)
+
+                pygame.display.flip() #Rafraîchissement de l'écran
+            elif k = 0:
+                abscisse_fleche_J1 = 0
+                ordonnee_fleche_J1 = 200
+    
+                abscisse_fleche_J2 = 600
+                ordonnee_fleche_J2 = 200
+
+                choix_fond(fenetre)
+
+                pygame.display.flip() #Rafraîchissement de l'écran
+
+                numero_fleches_J1 = random.randint(1,8)
+                numero_fleches_J2 = random.randint(1,8)
+    
+                choix_fleches(numero_fleches_J1, fenetre, abscisse_fleche_J1, ordonnee_fleche_J1)
+                choix_fleches(numero_fleches_J2, fenetre,abscisse_fleche_J2, ordonnee_fleche_J2  )
+
+                pygame.display.flip() #Rafraîchissement de l'écran
+
+                evenement(numero_fleches_J1, numero_fleches_J2, fenetre, vies-1)
 
                 pygame.display.flip() #Rafraîchissement de l'écran
     

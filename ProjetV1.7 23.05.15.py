@@ -362,6 +362,8 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
                 else :
                     print("trompé")
                 pygame.display.flip()
+                
+                main()
 
     pygame.quit()
 
