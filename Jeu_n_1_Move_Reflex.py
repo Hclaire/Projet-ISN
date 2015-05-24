@@ -257,4 +257,4 @@ def main_01():
                     evenement(numero_fleches_J1, numero_fleches_J2, fenetre)
 
                     pygame.display.flip() #Rafraîchissement de l'écran
-main()
+main_01()
