@@ -335,7 +335,7 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
                             bon = False
                 
                 elif (resultat_jeu_nb_droit != result_droit and bouton_enfonce == 2):
-                    son_incorrect.play()
+                    son_correct.play()
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
 
@@ -354,7 +354,7 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
 
                     while bon:
                         yninja -= 1
-                        fenetre.blit(affichage_bonhomme, (abscisse_ninja_gauche, yninja))
+                        fenetre.blit(affichage_bonhomme, (abscisse_ninja_droit, yninja))
                         pygame.display.flip()
 
                         if yninja == 480:
@@ -368,7 +368,7 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
     pygame.quit()
 
 
-def main():
+def main_02():
     pygame.init()
     pygame.display.init()
     # Ouverture de la fenêtre Pygame
