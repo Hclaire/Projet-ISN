@@ -456,7 +456,7 @@ def main_02(defaite_gauche,defaite_droite):
     abscisse_ninja_gauche = 190
     abscisse_ninja_droit = 738
 
-    evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja, abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee_bouton,abscisse_ninja_gauche, abscisse_ninja_droit)
+    defaite_gauche, defaite_droite = evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja, abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee_bouton,abscisse_ninja_gauche, abscisse_ninja_droit)
     pygame.display.flip()
 
     return defaite_gauche, defaite_droite
