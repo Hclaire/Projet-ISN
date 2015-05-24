@@ -462,9 +462,5 @@ def main_02(defaite_gauche,defaite_droite):
     return defaite_gauche, defaite_droite
     # Rafraîchissement de l'écran
 
+main_02(defaite_gauche, defaite_droite)
 
-<<<<<<< HEAD
-
-main_02()
-=======
->>>>>>> ed0f127445c383007fd1c0d2b0e6d48d1a06d5f6

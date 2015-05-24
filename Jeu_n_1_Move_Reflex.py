@@ -7,12 +7,11 @@ Created on Tue Apr 21 14:16:25 2015
 
 """
 
-<<<<<<< HEAD
 Jeu nÂ°1 : 
 L'utilisateur doit appuyer sur la flÃ¨che qui correspond Ã  l'Ã©cran
 si le fond de la flÃ¨che est bleu sinon il doit appuyer la flÃ¨che inverse.
 =======
-Jeu n掳1 : 
+Jeu n1 : 
 L'utilisateur doit appuyer sur la fl猫che qui correspond 脿 l'茅cran
 si le fond de la fl猫che est bleu sinon il doit appuyer la fl猫che inverse.
 >>>>>>> ed0f127445c383007fd1c0d2b0e6d48d1a06d5f6
@@ -32,7 +31,7 @@ pygame.display.flip() #Rafra卯chissement de l'茅cran
 pygame.time.wait(4000)
 
 i = 0
-while i < 50:
+while i < 20:
     
     image_cliquez = pygame.image.load("./fond/image_clignote.png").convert_alpha()
     fenetre.blit(image_cliquez, (0,0))
@@ -305,11 +304,5 @@ def main_01():
                     pygame.display.flip() #Rafra卯chissement de l'茅cran
 
                     evenement(numero_fleches_J1, numero_fleches_J2, fenetre)
-
-<<<<<<< HEAD
                     pygame.display.flip() #RafraÃ®chissement de l'Ã©cran
 main_01()
-=======
-                    pygame.display.flip() #Rafra卯chissement de l'茅cran
-main_01()
->>>>>>> ed0f127445c383007fd1c0d2b0e6d48d1a06d5f6
