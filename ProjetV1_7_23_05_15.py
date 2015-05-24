@@ -227,7 +227,7 @@ def affichage_resultat(liste_chiffre, fenetre, ordonnee, abscisse):
         abscisse += 125  # décalage pour affichage du deuxieme chiffre
 
 
-def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja,abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee,abscisse_ninja_gauche, abscisse_ninja_droit):
+def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja,abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee,abscisse_ninja_gauche, abscisse_ninja_droit):
     # BOUCLE INFINIE
     pygame.display.init()
 
@@ -243,6 +243,7 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
     continuer = True
     while continuer:
 
+        
 
         for event in pygame.event.get():  #Attente des événements
             if event.type == QUIT:  # on quitte la partie par la croix
@@ -288,6 +289,8 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
                     son_correct.play()
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
+                    situation_joueur_gauche = "gagne"
+                    defaite_gauche = defaite_gauche
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme,(abscisse_ninja_gauche, yninja))
@@ -295,12 +298,13 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
 
                         if yninja == 480:
                             bon = False
-
+                            
                 elif (resultat_jeu_nb_gauche != result_gauche and bouton_enfonce == 4):
                     son_correct.play()
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
-
+                    situation_joueur_gauche = "gagne"
+                    defaite_gauche = defaite_gauche                      
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_gauche, yninja))
@@ -308,12 +312,14 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
 
                         if yninja == 480:
                             bon = False
-                
+
+
                 elif (resultat_jeu_nb_gauche == result_gauche and bouton_enfonce == 4) or (resultat_jeu_nb_gauche != result_gauche and bouton_enfonce == 3) :
                     son_incorrect.play()
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageWrong.png").convert_alpha()
                     bon = True
-
+                    situation_joueur_gauche = "perdu"
+                    defaite_gauche += 1                        
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_gauche, yninja))
@@ -322,10 +328,13 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
                         if yninja == 480:
                             bon = False                    
 
+                            
                 elif (resultat_jeu_nb_droit == result_droit and bouton_enfonce == 1):
                     son_correct.play()
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
+                    situation_joueur_droit = "gagne"
+                    defaite_droite = defaite_droite                       
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme,(abscisse_ninja_droit, yninja))
@@ -333,12 +342,13 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
 
                         if yninja == 480:
                             bon = False
-                
+                            
                 elif (resultat_jeu_nb_droit != result_droit and bouton_enfonce == 2):
                     son_correct.play()
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageRight.png").convert_alpha()
                     bon = True
-
+                    situation_joueur_droit = "gagne"
+                    defaite_droite = defaite_droite                            
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_droit, yninja))
@@ -351,7 +361,8 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
                     son_incorrect.play()
                     affichage_bonhomme = pygame.image.load("./ImageBonhomme/imageWrong.png").convert_alpha()
                     bon = True
-
+                    situation_joueur_droit = "perdu"
+                    defaite_droite  += 1                        
                     while bon:
                         yninja -= 1
                         fenetre.blit(affichage_bonhomme, (abscisse_ninja_droit, yninja))
@@ -362,13 +373,34 @@ def evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauc
                 else :
                     print("trompé")
                 pygame.display.flip()
-                
-                main()
+
+                if defaite_gauche == 1:
+                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                    fenetre.blit(flamme,(500,500))
+                elif defaite_gauche == 2:
+                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                    fenetre.blit(flamme,(650,500))
+                else:
+                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                    fenetre.blit(flamme,(800,500))                  
+
+                if defaite_droite == 1 :
+                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                    fenetre.blit(flamme,(500,500))                                    
+                elif defaite_gauche == 2:
+                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                    fenetre.blit(flamme,(650,500))                                     
+                else:
+                    flamme = pygame.image.load("./vie-flamme/flamme.png").convert_alpha()
+                    fenetre.blit(flamme,(800,500))                                     
+                            
+                    
+                pygame.display.flip()
 
     pygame.quit()
+    return defaite_gauche, defaite_droite
 
-
-def main_02():
+def main_02(defaite_gauche,defaite_droite):
     pygame.init()
     pygame.display.init()
     # Ouverture de la fenêtre Pygame
@@ -424,11 +456,15 @@ def main_02():
     abscisse_ninja_gauche = 190
     abscisse_ninja_droit = 738
 
-    evenement(fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja, abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee_bouton,abscisse_ninja_gauche, abscisse_ninja_droit)
+    evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja, abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee_bouton,abscisse_ninja_gauche, abscisse_ninja_droit)
     pygame.display.flip()
 
+    return defaite_gauche, defaite_droite
     # Rafraîchissement de l'écran
 
 
+<<<<<<< HEAD
 
 main_02()
+=======
+>>>>>>> ed0f127445c383007fd1c0d2b0e6d48d1a06d5f6
