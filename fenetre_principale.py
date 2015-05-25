@@ -96,13 +96,15 @@ def choix_menu(fenetre):
                 fond_accueil = pygame.image.load("./fond/fondJEU02.png").convert_alpha() #Chargement du premier fond d'écran du jeu.
                 fenetre.blit(fond_accueil, (0,0))#Collage du premier fond d'écran du jeu Head In Fire.
                 pygame.display.flip()#Rafraîchissement de la fenêtre pygame
-                pygame.time.wait(700)                
-
+                
+                son_fond = pygame.mixer.Sound("./Son_touches/jeu_deux/feu_jeu.wav")
+                son_fond.play()
+                pygame.time.wait(700)
                 continuer = True#on crée une variable booléenne.
                 while continuer:#Tant que c'est vrai on continue
                     i = 0#Initialisation du compteur à 0.
                     while i < 20:#Tant que le comteur est <0 alors:
-    
+ 
                         image_cliquez = pygame.image.load("./fond/fondJEU02_regle_clignote.png").convert_alpha()
                         fenetre.blit(image_cliquez, (0,0))
                         pygame.display.flip()
@@ -111,7 +113,7 @@ def choix_menu(fenetre):
                         fenetre.blit(image_regle_jeu, (0,0))
                         pygame.display.flip()
                         pygame.time.wait(700)
-    
+                        
                         i += 1
                         #Ensemble de chargement et collage d'images permettant de faire clignoter les images du menus.
                         for event in pygame.event.get():	#Attente des événements
