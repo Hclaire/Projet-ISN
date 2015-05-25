@@ -103,6 +103,8 @@ def evenement(defaite_gauche, defaite_droite, numero_fleches_J1, numero_fleches_
     
     image_perdu = pygame.image.load("./fond/fond_panneau_perdu.png").convert_alpha()
     image_gagne = pygame.image.load("./fond/fond_panneau_gagne.png").convert_alpha()
+    faux = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
+    vrai = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
     while continuer:
         
         for event in pygame.event.get():    #Attente des 茅v茅nements
@@ -117,72 +119,117 @@ def evenement(defaite_gauche, defaite_droite, numero_fleches_J1, numero_fleches_
                         
                     if numero_fleches_J1 == 1 or numero_fleches_J1 == 7:
 
-                        result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()
                         k_J1 = 1
                     else:
-
-                        result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()
                         k_J1 = 0
-                    compteur +=1
-
-                    fenetre.blit(result, (160,300))
+                    compteur +=1                    
                     
-
                 elif event.key == K_s:
 
                     if numero_fleches_J1 == 4 or numero_fleches_J1 == 6:
 
-                        result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()
                         k_J1 = 1
             
                     else:
-
-                        result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()
+    
                         k_J1 = 0
                     compteur +=1
-                    fenetre.blit(result, (160,300))
+                    
 
                 elif event.key == K_e: 
                         
                     if numero_fleches_J1 == 3 or numero_fleches_J1 == 5:
-                            
-                        result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()       
+    
                         k_J1 = 1
                     else:
-                            
-                        result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()
+                        
                         k_J1 = 0
-                    fenetre.blit(result, (160,300))
+                    compteur +=1
 
                 elif event.key == K_f:
                     
                     if numero_fleches_J1 == 2 or numero_fleches_J1 == 8:
-                            
-                        result = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()
+
                         k_J1 = 1
                     else:
-
-                        result = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()                   
+                   
                         k_J1 = 0
                     compteur +=1
-                    fenetre.blit(result, (160,300))
+                    
                 else:
                     k_J1 = 3
+                    
 
-                pygame.display.flip()
-                if k_J1 == 0:
+                if event.key == K_DOWN: #Si "fl猫che bas"
+                        
+                    if numero_fleches_J2 == 1 or numero_fleches_J2 == 7:
+                        
+                        k_J2 = 1
+                    else:
+
+                        k_J2 = 0
+                    compteur +=1
+                    
+                elif event.key == K_RIGHT:
+                    
+                    if numero_fleches_J2 == 2 or numero_fleches_J2 == 8:
+                            
+                        k_J2 = 1
+                    else:
+
+                        k_J2 = 0
+                    compteur +=1
+                    
+                elif event.key == K_LEFT: 
+                        
+                    if numero_fleches_J2 == 4 or numero_fleches_J2 == 6:
+
+                        k_J2 = 1
+                    else:
+
+                        k_J2 = 0
+                    compteur +=1
+                    
+                elif event.key == K_UP:
+                    
+                    if numero_fleches_J2 == 3 or numero_fleches_J2 == 5:
+
+                        k_J2 = 1
+                    else:
+
+                        k_J2 = 0
+                    compteur +=1
+                else :
+                    k_J2 = 3
+
+                if k_J1==1:
+                    k_J2= 0
+
+                elif k_J1 == 0:
+                    k_J2= 1
+
+                elif k_J2== 1:
+                    k_J1 = 0
+                else:
+                    k_J1 = 1
+                    
+                if k_J1 == 1 : 
+
+                    
+                    fenetre.blit(vrai, (160,300))
+                    pygame.display.flip()
+                    son_correct.play()
+                    
+                    pygame.time.wait(2000)
+                else :
+                    
+                    fenetre.blit(faux, (160,300))
+                    pygame.display.flip()
+                    son_incorrect.play()
+                    pygame.time.wait(2000)
                     defaite_gauche += 1
                     if defaite_gauche == 1:
                         deux_vies = pygame.image.load("./fond/fond_panneau_2vies.png").convert_alpha()
-
                         fenetre.blit (deux_vies, (0,200))
                     elif defaite_gauche == 2:
                         une_vie = pygame.image.load("./fond/fond_panneau_1vie.png").convert_alpha()
@@ -190,74 +237,25 @@ def evenement(defaite_gauche, defaite_droite, numero_fleches_J1, numero_fleches_
                     else:
                         
                         fenetre.blit(image_perdu,(0,200))
+                        fenetre.blit(image_gagne, (600, 200))
+                        pygame.time.wait(10000)
                     pygame.display.flip()
                     pygame.time.wait(2000)
+                pygame.display.flip()
+                    
+                if k_J2 == 1:
+                    fenetre.blit(vrai, (750,300))
+                    pygame.display.flip()
 
-                if event.key == K_DOWN: #Si "fl猫che bas"
-                        
-                    if numero_fleches_J2 == 1 or numero_fleches_J2 == 7:
-                            
-                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()  
-                        k_J2 = 1
-                    else:
+                    son_correct.play()
+                    pygame.time.wait(2000)
+                    
+                else:
+                    
+                    fenetre.blit(faux, (750,300))
+                    pygame.display.flip()
 
-                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()
-                        k_J2 = 0
-                    compteur +=1
-                    fenetre.blit(result1, (750,300))
-                    
-                elif event.key == K_RIGHT:
-                    
-                    if numero_fleches_J2 == 2 or numero_fleches_J2 == 8:
-                            
-                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()
-                        k_J2 = 1
-                    else:
-
-                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()
-                        k_J2 = 0
-                    compteur +=1
-                    fenetre.blit(result1, (750,300))
-                    
-                elif event.key == K_LEFT: 
-                        
-                    if numero_fleches_J2 == 4 or numero_fleches_J2 == 6:
-                            
-                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play() 
-                        k_J2 = 1
-                    else:
-
-                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()
-                        k_J2 = 0
-                    compteur +=1
-                    fenetre.blit(result1, (750,300))
-                    
-                elif event.key == K_UP:
-                    
-                    if numero_fleches_J2 == 3 or numero_fleches_J2 == 5:
-                            
-                        result1 = pygame.image.load("./correct-incorrect/correct.png").convert_alpha()
-                        son_correct.play()
-                        k_J2 = 1
-                    else:
-
-                        result1 = pygame.image.load("./correct-incorrect/incorrect.png").convert_alpha()
-                        son_incorrect.play()
-                        k_J2 = 0
-                    compteur +=1
-                    fenetre.blit(result1, (750,300))
-                else :
-                    k_J2 = 3
-    
- 
-                if k_J2 == 0 :
-                    
+                    son_incorrect.play()
                     defaite_droite += 1
                     if defaite_droite == 1:
                         deux_vies = pygame.image.load("./fond/fond_panneau_2vies.png").convert_alpha()
@@ -267,17 +265,22 @@ def evenement(defaite_gauche, defaite_droite, numero_fleches_J1, numero_fleches_
                         fenetre.blit(une_vie,(600,200))
                     else:
                         fenetre.blit(image_perdu,(600,200))
+                        fenetre.blit(image_gagne, (0, 200))
+                        pygame.display.flip()
+                        pygame.time.wait(10000)
                         
+                    pygame.display.flip()
+                    pygame.time.wait(2000)
                 pygame.display.flip()
-                pygame.time.wait(2000)
                 
          
                 while (defaite_gauche<4 or defaite_droite<4):
                     defaite_gauche, defaite_droite = main_01(defaite_gauche, defaite_droite)
                 
-    
+                pygame.display.flip()
     pygame.quit()
     return defaite_gauche, defaite_droite
+    
 def main_01(defaite_gauche, defaite_droite):
     
 
@@ -286,7 +289,7 @@ def main_01(defaite_gauche, defaite_droite):
     
     abscisse_fleche_J2 = 600
     ordonnee_fleche_J2 = 200
-
+    pygame.display.flip()
 
     numero_fleches_J1 = random.randint(1,8)
     numero_fleches_J2 = random.randint(1,8)

@@ -262,7 +262,7 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     bouton_reponse = pygame.image.load("./Boutons/BoutonRightEnfonce.png").convert_alpha()
                     fenetre.blit(bouton_reponse, (abscisse_bouton_cadre_droit, ordonnee))
                     bouton_enfonce = 1
-                    i+=1
+                    i+=1 
                 elif event.key == K_s:
                     bouton_reponse = pygame.image.load("./Boutons/BoutonRightEnfonce.png").convert_alpha()
                     fenetre.blit(bouton_reponse, (abscisse_bouton_cadre_gauche, ordonnee))
