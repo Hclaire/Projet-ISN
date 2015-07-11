@@ -431,9 +431,10 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                 pygame.time.wait(500)
                 continuer = False
 
-            i = 0
-            if event.type == KEYDOWN and i < 1:
-                # KEYDOWN => on appuie sur une touche et i < 1
+          
+
+            if event.type == KEYDOWN and compteur < 1:
+                # KEYDOWN => on appuie sur une touche et compteur < 1
                 # ---- > on ne peut enfoncé qu'un seul bouton par partie
                 son_appuiebouton.play()
                 if event.key == K_LEFT:  # appuie sur la touche fleche gauche (bouton vrai du joueur de droite)
@@ -458,7 +459,7 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     fenetre.blit(bouton_reponse, (abscisse_bouton_cadre_gauche + 320, ordonnee))
                     # placement dans la fenêtre avec coordonnées
                     bouton_enfonce = 4  # le bouton enfonce est faux (Joueur de gauche) 
-                    i+=1
+                    compteur+=1
                 else:
                     bouton_enfonce = 5  # aucun des boutons proposés
                 
