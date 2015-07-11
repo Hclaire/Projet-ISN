@@ -42,12 +42,19 @@ Retour
 
 None
 """
+victoire_droite = 0
+victoire_gauche = 0
 
-def choix_menu(fenetre):
+def choix_menu(fenetre, victoire_droite, victoire_gauche):
     continuer = True #on crée une variable booléenne.
     while continuer: #Tant que c'est vrai on continue
         son_quit_ecran = pygame.mixer.Sound("./Son_touches/jeu_deux/quitteecran.wav")
         for event in pygame.event.get():  #Attente des événements
+
+
+
+
+            
             if event.type == QUIT:  # on quitte la partie par la croix
                 son_quit_ecran.play()#On ajoute le son quitter écran à cet évenement.
                 pygame.time.wait(500)#Attente de 0.5 sec
@@ -113,7 +120,7 @@ def choix_menu(fenetre):
                         fenetre.blit(image_regle_jeu, (0,0))
                         pygame.display.flip()
                         pygame.time.wait(700)
-                        
+
                         i += 1
                         #Ensemble de chargement et collage d'images permettant de faire clignoter les images du menus.
                         for event in pygame.event.get():	#Attente des événements
@@ -123,16 +130,34 @@ def choix_menu(fenetre):
                                 continuer == False  #On arrête le jeu et la boucle
                             elif event.type == MOUSEBUTTONDOWN:
                                 if event.button == 1:  #Condition si on clique n'importe où pour continuer le jeu alors:
-                                    from HeadInFire import main_02  #On lance le jeu Head In Fire   
-                #Permet de quitter pygame.
+
+                                    from HeadInFire import main_02  #On lance le jeu Head In Fire
+
+                                    fondaffiche_score = pygame.image.load("./fond/fondjeux_deux.png").convert_alpha()
+                                    fenetre.blit(fondaffiche_score, (0,0))
+
+
+
+                                    defaite_gauche, defaite_droite = main_02
+                                    if defaite_gauche == 3 :
+                                        victoire_droite += 1
+                                    elif defaite_droite == 3:
+                                        victoire_gauche += 1
+
+                                    while even.type != QUIT:
+                                        choix_menu(fenetre, victoire_droite, victoire_gauche )
+                                    
+
+                                    pygame.time.wait(700)    
+                #Permet de quitter 
                 pygame.display.flip()
     pygame.quit()
         
 
-def main():#Fonction principale
+def main(victoire_droite, victoire_gauche):#Fonction principale
     fenetre = affichage_menu()#Appel de la fonction affichage_menu()
-    choix_menu(fenetre)#Appel de la fonction choix_menu()
+    choix_menu(fenetre, victoire_droite ,victoire_gauche)#Appel de la fonction choix_menu()
 
 
-main()#Appel de la fonction principale
+main(victoire_droite, victoire_gauche)#Appel de la fonction principale
     

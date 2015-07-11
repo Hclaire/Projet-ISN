@@ -588,12 +588,40 @@ def evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resu
                     print("vous vous êtes trompés de touche")
                 pygame.display.flip()
 
-         
+                fondaffiche_score = pygame.image.load("./fond/fondjeux_deux.png").convert_alpha()
+                
+                fond_gagnant = pygame.image.load("./fond/fondvert.jpg").convert_alpha()
+                fond_perdant = pygame.image.load("./fond/fondrose.jpg").convert_alpha()
+
+
                 while (defaite_gauche < 3 and defaite_droite < 3):  # tant que l'un des deux n'a pas perdu
                     # on perd quand on a 3flammes)
+
                     # on relance le programme en gardant les variables "défaites" des parties précédentes
-                    defaite_gauche, defaite_droite = main_02(defaite_gauche, defaite_droite)
         
+                    defaite_gauche, defaite_droite = main_02(defaite_gauche, defaite_droite)
+
+
+
+
+
+
+                fenetre.blit(fondaffiche_score, (0,0))
+                if defaite_gauche == 3 :
+                    fenetre.blit(fond_gagnant, (612,150))    
+                    fenetre.blit(fond_perdant, (71,150))                                        
+                elif defaite_droite == 3 :
+                    fenetre.blit(fond_gagnant, (71,150))    
+                    fenetre.blit(fond_perdant, (612,150))
+                    pygame.display.flip()
+                pygame.time.wait(700)
+                continuer = False
+
+
+
+
+
+                    
     pygame.quit()
     return defaite_gauche, defaite_droite
 """
@@ -672,7 +700,9 @@ def main_02(defaite_gauche,defaite_droite):
     # recupère les defaites du JOUEUR GAUCHE et du JOUEUR DROIT
     defaite_gauche, defaite_droite = evenement(defaite_gauche,defaite_droite,fenetre, resultat_jeu_nb_gauche,resultat_jeu_nb_droit, result_gauche, result_droit ,yninja, abscisse_bouton_cadre_gauche,abscisse_bouton_cadre_droit, ordonnee_bouton,abscisse_ninja_gauche, abscisse_ninja_droit)
     pygame.display.flip()
+    return defaite_gauche, defaite_droite
 
+    
 
 #variables globales 
 defaite_gauche = 0  
